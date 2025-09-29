@@ -1,0 +1,30 @@
+reset;
+option solver cplex;
+model SOCS.mod;
+data SOCS.dat;
+solve;
+
+display "---- Charging schedule -----";
+display charge;
+display "---- Battery Level in kW for resources over time (h) -----";
+display battery_charge;  
+display "---- Battery Percentage for resources over time (h)-----";
+display {(res, t) in RESOURCES cross TIME} round((battery_charge[res, t] / battery_capacity[res]) * 100 * 10) / 10;
+/*
+display "---- Total Delay (h) -----";
+display sum {r in RESOURCES, a in ACTIVITIES} delay[r,a];
+display "---- Total Off Hours Work(h) -----";
+display sum {r in RESOURCES, a in ACTIVITIES} outside_work[r,a];
+display "---- Total Penalty Cost (SEK) -----";
+display sum {r in RESOURCES, a in ACTIVITIES} (delay_penalty * delay[r,a] + outside_work_penalty * outside_work[r,a]);
+display "---- Penalty Cost % of Total Cost -----";
+display 100 * sum {r in RESOURCES, a in ACTIVITIES} (delay_penalty * delay[r,a] + outside_work_penalty * outside_work[r,a]) / Total_Cost;  
+display "---- Engagement in Different Activities for Each Resource Over Time -----";
+display {(r, a, t) in RESOURCES cross ACTIVITIES cross TIME} engaged_in_activity[r, a, t];
+display "---- Matrix of Non-Work Hours (Resources × Activities) -----";
+display {(r, a) in RESOURCES cross ACTIVITIES} sum {t in NON_WORK_HOURS} engaged_in_activity[r, a, t];
+display "---- Total Non-Work Hours per Activity -----";
+display {a in ACTIVITIES} sum {r in RESOURCES, t in NON_WORK_HOURS} engaged_in_activity[r, a, t];
+display "---- Total Non-Work Hours per Resource -----";
+display {r in RESOURCES} sum {a in ACTIVITIES, t in NON_WORK_HOURS} engaged_in_activity[r, a, t];
+*/

@@ -86,8 +86,6 @@ Model: MILP in AMPL, solved with Gurobi.
 
 ## Repository layout (suggestion)
 ```
-/data        # synthetic example data (if needed)
-/results     # figures (battery trajectories, charging schedules)
 README.md
 SOCS.mod
 SOCS.dat

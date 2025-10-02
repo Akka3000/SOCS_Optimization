@@ -67,7 +67,7 @@ display actual_activity_start, delay, outside_work;
 
 **Setup.**  
 7 resources, 9 activities over 168 hours (1 week). Work hours: 06–16 daily.  
-Model: MILP in AMPL, solved with Gurobi.
+Model: MILP in AMPL, solved with CPLEX.
 
 **Sensitivity analysis on final state of charge (SOC requirement):**
 
